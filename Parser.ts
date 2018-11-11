@@ -113,7 +113,7 @@ export class Parser {
       }
 
       //adding the name of the purchase to the output string
-      receiptDetails += String(purchases[i].getName()) + " at ";
+      receiptDetails += String(purchases[i].getName()) + ": ";
 
       //adding the price to the output string
       receiptDetails += this.receiptFriendlyNumbers(purchases[i].getPrice() + purchases[i].getSalesTax()) + "\n";
