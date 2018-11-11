@@ -22,7 +22,7 @@ describe('Reading input files', () => {
         const inputFolder: string = "./test/EmptyReadingTest";
         const result: string[][] = parser.readFiles(inputFolder);
         expect(result.length).to.equal(1);
-        expect(result[0][0]).to.equal('');
+        expect(result[0][0]).to.equal(' ');
     });
     
     it('should read valid input files', () => {
