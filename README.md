@@ -126,11 +126,11 @@ Total = (2 * 920.00) + (1 * 5.00) = 1845.00
 
 ## Running the Implementation
 1. Download the files in this repository and look at the input files (in the input folder).
-2. You will need `chai` and `mocha` for unit testing, and types/nodes for parsing. When you download `package.json` and `tsconfig.json`, do this:
+2. You will need `chai` and `mocha` for unit testing, and types/nodes for parsing. Do this:
 
 ```
-$ npm install @types/node --save-dev
-$ npm install chai mocha ts-node @types/chai @types/mocha --save-dev
+$ npm install 
+$ npm install -g typescript
 ```
 
 3. Transpile the files. The JavaScript files will be created in the `dist` folder. Run the `driver.js` program to see the outputs for the mentioned input files.
