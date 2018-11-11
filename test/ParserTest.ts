@@ -42,13 +42,13 @@ describe("Creating Purchases", () => {
     });
 
     it('should create a valid tax free purchase', () => {
-       const taxFreeSentenceParsed: string[][] = [ [ "5 bags of ice cream at 10.00" ] ]; 
+       const taxFreeSentenceParsed: string[][] = [ [ "5 bags of skittles at 10.00" ] ]; 
        const purchases: Purchase[][] = parser.constructPurchase(taxFreeSentenceParsed);
        
        expect(purchases.length).to.equal(1);
        var taxFreePurchase: Purchase = purchases[0][0];
        expect(taxFreePurchase.getSalesTax()).to.equal(0);
-       expect(taxFreePurchase.getName()).to.equal("bags of ice cream");
+       expect(taxFreePurchase.getName()).to.equal("bags of skittles");
        expect(taxFreePurchase.getPrice()).to.equal(10);
        expect(taxFreePurchase.getQuantity()).to.equal(5);       
        expect(taxFreePurchase.getTaxFree()).to.equal(true);
@@ -57,13 +57,13 @@ describe("Creating Purchases", () => {
     });
 
     it('should create a valid imported purchase', () => {
-        const importSentenceParsed: string[][] = [ [ "5 imported bags of ice cream at 10.00" ] ]; 
+        const importSentenceParsed: string[][] = [ [ "5 imported bags of skittles at 10.00" ] ]; 
         const purchases: Purchase[][] = parser.constructPurchase(importSentenceParsed);
         
         expect(purchases.length).to.equal(1);
         var importedPurchase: Purchase = purchases[0][0];
         expect(importedPurchase.getSalesTax()).to.equal(0.5);
-        expect(importedPurchase.getName()).to.equal("bags of ice cream");
+        expect(importedPurchase.getName()).to.equal("bags of skittles");
         expect(importedPurchase.getPrice()).to.equal(10);
         expect(importedPurchase.getQuantity()).to.equal(5);       
         expect(importedPurchase.getTaxFree()).to.equal(true);
