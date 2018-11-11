@@ -65,6 +65,7 @@ Total: 1,149.78
 1. We assume that all purchase information will be structures as in the examples: starting with the quantity, then stating if it was imported or not, then the name of the item, then finally the price at the end (without any currency symbols).
 2. To determine which item is tax-free, we decide that if something is "bag(s) of" or "crate(s) of" an item, it is a type of candy, popcorn, or coffee, and as such is tax-free. This is flimsy, as we could easily have "crate of iPhones", but this assumption is made for simplicity. As the examples seem to show a wide variety of tax-free goods such as Snickers and Skittles (and not generic item names like "candy" or "coffee"), it would be difficult to handle this case without a sort of natural language processing model. 
 3. We will always print out the prices and taxes up to exactly two decimal places, even if it's a whole number (for example, 20 will be 20.00). In the original requirements, there were many inconsistencies in this formatting, as sometimes this receipt-friendly number was printed (16.00) while other times it was printed as a regular number (60.5). For this implementation, for consistency, all printed numbers are in the receipt-friendly format.
+4. The price at the end of the purchase is for one quantity of that item. For example, "5 bags of candy at 8" implies one bag of candy is 8 (and so 5 boxes would be 40).
 
 ## Implementation
 The input files are read by the Parser program, which then breaks the input files into purchase information for each basket. This information is further parsed to construct actual Purchase objects for each purchase. Tax information is the computed on the objects. The objects are then again parsed into text, to be written to standard output or written to an output file.
@@ -85,7 +86,7 @@ Will be broken down as:
 ]
 ```
 
-This is created into objects:
+This is created into objects and tax is computed:
 
 ```
 [
@@ -94,19 +95,21 @@ This is created into objects:
   imported: true,
   name: "boxes of iPhones",
   tax-free: false,
-  price: 800
+  price: 800,
+  salesTax: 120
  },
  Purchase: {
   quantity: 1,
   imported: false,
   name: "bag of chocolates",
   tax-free: true,
-  price: 5
+  price: 5,
+  salesTax: 0
  }
 ]
 ```
 
-Taxes are computed and rebuilt into text:
+This is rebuilt into text:
 
 ```
 2 imported boxes of iPhones at 920.00
@@ -114,6 +117,8 @@ Taxes are computed and rebuilt into text:
 Sales Taxes: 240.00
 Total: 1,845.00
 ```
+
+This is because tax of one box of iPhones is 120, so price on the receipt is 800 + 120 = 920. As there are 2 boxes, overall sales tax becomes 240. Sales tax of bag of chocolate is 0, so that does not contribute to the tax.
 
 ## Running the Implementation
 1. Download the files in this repository and look at the input files (in the input folder).
