@@ -226,11 +226,11 @@ export class Parser {
    */
   private parseIfTaxFree(info: string[]): boolean {
 
-    //we assume if something is in a "bag" or "crate", it is tax-free
-    const EXEMPT_KEYWORDS: string[] = ["bag", "bags", "crate", "crates"];
+    //we assume these keyword purchases are tax-free (not exhaustive)
+    const EXEMPT_KEYWORDS: string[] = ["skittles", "popcorn", "coffee", "snickers", "chocolate", "M&Ms", "gimmy bears"];
 
     //checking to see if the purchase is tax-free
-    let intersection = info.filter(x => EXEMPT_KEYWORDS.indexOf(x) > -1);
+    let intersection = info.filter(x => EXEMPT_KEYWORDS.indexOf(x.toLowerCase()) > -1);
 
     return intersection.length != 0;
   }
