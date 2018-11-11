@@ -118,7 +118,9 @@ Sales Taxes: 240.00
 Total: 1,845.00
 ```
 
-This is because tax of one box of iPhones is 120, so price on the receipt is 800 + 120 = 920. As there are 2 boxes, overall sales tax becomes 240. Sales tax of bag of chocolate is 0, so that does not contribute to the tax.
+This is because tax of one box of iPhones is 120, so price on the receipt is 800 + 120 = 920. As there are 2 boxes, overall sales tax becomes 240. Sales tax of bag of chocolate is 0, so that does not contribute to the tax. 
+So, sales tax = (2 * 120.00) + (1 * 0) = 240.00
+    total = (2 * 920.00) + (1 * 5.00) = 1845.00
 
 ## Running the Implementation
 1. Download the files in this repository and look at the input files (in the input folder).
