@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "types": [ "ts-node" ],
+        "outDir": "dist",
+        "rootDir": "./",
+        "typeRoots": [ "../node_modules/@types" ],
+        "sourceMap": true
+    },
+    "scripts": {
+        "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    }
+}
