@@ -140,7 +140,7 @@ $ tsc
 $ node dist/driver.js
 ```
 
-4. There are 18 unit tests testing all of the currently used public methods. You can check the test suites by running the following:
+4. There are 18 unit tests testing all of the currently used public methods. The private methods are tested through these public methods. You can check the test suites by running the following:
 
 ```
 $ npm run test
